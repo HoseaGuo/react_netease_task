@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+
+import Confirm from './task/Confirm'
+import InputNumber from './task/InputNumber'
+
+class App extends Component {
+  render(){
+    return (
+      <Router>
+        <ul>
+          <li><Link to='/task1'>作业1</Link></li>
+          <li><Link to='/task2'>作业2</Link></li>
+        </ul>
+        
+        <Switch>
+          <Route path='/task1' component={InputNumber} exact></Route>
+          <Route path='/task2' component={Confirm} exact></Route>
+        </Switch>
+      </Router>
+    )
+  }
 }
+
 
 export default App;
